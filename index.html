@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#05030f" />
+  <title>COSMODRIFT — a neon arcade shooter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🚀</text></svg>" />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="540" height="720" aria-label="Cosmodrift game canvas"></canvas>
+
+    <!-- Touch controls (shown only on touch devices) -->
+    <div id="touch-controls" hidden>
+      <div class="tc-btn" data-key="ArrowLeft" aria-label="move left">◀</div>
+      <div class="tc-btn tc-fire" data-key="Space" aria-label="fire">FIRE</div>
+      <div class="tc-btn" data-key="ArrowRight" aria-label="move right">▶</div>
+    </div>
+  </div>
+
+  <p id="hint">
+    Arrows / A &middot; D to move &nbsp;•&nbsp; Space to fire &nbsp;•&nbsp; P pause &nbsp;•&nbsp; M mute
+  </p>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

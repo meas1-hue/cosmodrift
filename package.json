@@ -1,0 +1,13 @@
+{
+  "name": "cosmodrift",
+  "version": "1.0.0",
+  "description": "A neon Galaga-style arcade shooter built from scratch with vanilla JS + HTML5 Canvas.",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx --yes serve ."
+  },
+  "keywords": ["game", "arcade", "shooter", "galaga", "canvas", "webaudio"],
+  "license": "MIT",
+  "private": true
+}

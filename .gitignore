@@ -1,0 +1,13 @@
+# dependencies (none required, but in case you run npx serve)
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# build / temp
+dist/
+.cache/
