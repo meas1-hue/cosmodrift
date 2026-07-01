@@ -28,6 +28,12 @@ if (isTouch) touchControls.hidden = false;
 const input = new Input(canvas, touchControls);
 const game = new Game(ctx, input);
 
+// --- Auto-pause when backgrounded; avoid a huge dt jump on return. ---
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) game.handleHidden();
+  else last = performance.now();
+});
+
 // --- Main loop (delta-time, frame-rate independent) ---
 let last = performance.now();
 function frame(now) {

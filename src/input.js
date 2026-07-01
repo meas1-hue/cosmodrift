@@ -43,6 +43,11 @@ export class Input {
     // Lose focus -> release everything (avoids "stuck" movement).
     window.addEventListener('blur', () => this.held.clear());
 
+    // Suppress the iOS long-press context menu / selection callout on controls.
+    window.addEventListener('contextmenu', (e) => {
+      if (e.target.closest && e.target.closest('#touch-controls, #game')) e.preventDefault();
+    });
+
     // Touch / pointer buttons.
     if (touchControls) {
       for (const btn of touchControls.querySelectorAll('[data-key]')) {

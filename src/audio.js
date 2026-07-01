@@ -21,13 +21,19 @@ export class AudioEngine {
 
   // Must be called from a user gesture (autoplay policy).
   init() {
-    if (this.ctx) { if (this.ctx.state === 'suspended') this.ctx.resume(); return; }
+    if (this.ctx) {
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      this._unlockIOS();
+      return;
+    }
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return;
     this.ctx = new AC();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
     this.master = this.ctx.createGain();
     this.master.gain.value = this.muted ? 0 : 0.9;
     this.master.connect(this.ctx.destination);
+    this._unlockIOS();
 
     this.musicGain = this.ctx.createGain();
     this.musicGain.gain.value = 0.34;
@@ -36,6 +42,20 @@ export class AudioEngine {
     this.sfxGain = this.ctx.createGain();
     this.sfxGain.gain.value = 0.9;
     this.sfxGain.connect(this.master);
+  }
+
+  // iOS Safari keeps the context effectively muted until a zero-length buffer
+  // is played from within a user gesture. Harmless to call repeatedly.
+  _unlockIOS() {
+    if (!this.ctx || this._unlocked) return;
+    try {
+      const buf = this.ctx.createBuffer(1, 1, 22050);
+      const src = this.ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(this.ctx.destination);
+      src.start(0);
+      this._unlocked = true;
+    } catch { /* ignore */ }
   }
 
   toggleMute() {

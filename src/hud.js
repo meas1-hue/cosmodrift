@@ -28,11 +28,11 @@ export function drawHUD(ctx, game) {
   // Score (top-left)
   ctx.font = '600 13px ui-monospace, monospace';
   ctx.fillStyle = 'rgba(232,246,255,0.55)';
-  ctx.fillText('SCORE', 16, 12);
+  ctx.fillText('SCORE', 22, 14);
   ctx.font = '700 24px ui-monospace, monospace';
   ctx.fillStyle = COLORS.ink;
   ctx.shadowBlur = 10; ctx.shadowColor = COLORS.neon;
-  ctx.fillText(String(game.score).padStart(6, '0'), 16, 28);
+  ctx.fillText(String(game.score).padStart(6, '0'), 22, 30);
   ctx.shadowBlur = 0;
 
   // High score (top-center)
@@ -50,11 +50,11 @@ export function drawHUD(ctx, game) {
   ctx.textAlign = 'right';
   ctx.font = '600 13px ui-monospace, monospace';
   ctx.fillStyle = 'rgba(232,246,255,0.55)';
-  ctx.fillText('WAVE', WIDTH - 16, 12);
+  ctx.fillText('WAVE', WIDTH - 22, 14);
   ctx.font = '700 24px ui-monospace, monospace';
   ctx.fillStyle = COLORS.neon2;
   ctx.shadowBlur = 10; ctx.shadowColor = COLORS.neon2;
-  ctx.fillText(String(game.wave), WIDTH - 16, 28);
+  ctx.fillText(String(game.wave), WIDTH - 22, 30);
   ctx.shadowBlur = 0;
 
   ctx.restore();

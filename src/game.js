@@ -81,6 +81,11 @@ export class Game {
 
   addShake(amount) { this.shake = Math.min(18, this.shake + amount); }
 
+  // Called when the tab/app is backgrounded (e.g. phone locked, app switch).
+  handleHidden() {
+    if (this.state === STATE.PLAYING) this.state = STATE.PAUSED;
+  }
+
   // ---- update ----
   update(dt) {
     this.time += dt;
