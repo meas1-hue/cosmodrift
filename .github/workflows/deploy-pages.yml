@@ -27,11 +27,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure Pages
-        # enablement: true turns on GitHub Pages automatically (no manual
-        # settings toggle required) and sets the build type to "workflow".
+        # Requires Pages to be enabled with Source = "GitHub Actions" in
+        # repo Settings → Pages (the default Actions token can't enable it).
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
